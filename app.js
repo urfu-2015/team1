@@ -9,15 +9,18 @@ var passport = require('passport');
 var expressSession = require('express-session');
 var flash = require('connect-flash');
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var authRoutes = require('./routes/auth');
+var newQuest = require('./routes/upload');
 
 var secretKey = require('config').get('secretKey');
 
 var app = express();
 
 // view engine setup
+
 app.engine('html', swig.renderFile);
 app.set('views', path.join(__dirname, 'bundles'));
 app.set('view engine', 'html');
@@ -41,6 +44,8 @@ app.use(flash());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/', authRoutes);
+
+app.use('/quests/new', newQuest);
 
 require('./controllers/auth/auth-config');
 // catch 404 and forward to error handler
