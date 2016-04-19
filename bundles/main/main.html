@@ -3,13 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %} {% endblock %}</title>
-    {% if not isDev %}
-        <link rel="stylesheet" href="{{ bundleBase }}main.bundle.css">
-    {% endif %}
-        <script type="text/javascript" src="{{ bundleBase }}main.bundle.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Exo+2:400,700,400italic" rel="stylesheet"
           type="text/css">
-    {% block head %}{% endblock %}
 </head>
 <body>
     <main class="main">
@@ -21,5 +16,9 @@
     {% include "../../blocks/footer/footer.html" %}
     </main>
 <script src="../../blocks/signin-form/signin-form.js"></script>
+{% if not isDev %}
+<link rel="stylesheet" href="{{ bundleBase }}main.bundle.css">
+{% endif %}
+<script type="text/javascript" src="{{ bundleBase }}main.bundle.js"></script>
 </body>
 </html>
