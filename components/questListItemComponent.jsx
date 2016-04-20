@@ -1,8 +1,8 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+export default class QuestListItemComponent extends React.Component {
 
-    render: function () {
+    render() {
         return (
             <li id={this.props.id}>
                 <div> 
@@ -24,4 +24,4 @@ module.exports = React.createClass({
             </li>
         );
     }
-});
+}

@@ -1,7 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-
-var QuestListItemComponent = require('./questListItemComponent.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import QuestListItemComponent from "./questListItemComponent.jsx";
 
 var getAll = function(callback) {
     var xhr = new XMLHttpRequest();
@@ -26,32 +25,29 @@ var getAll = function(callback) {
     xhr.send({});
 };
 
-var QuestList = React.createClass({
+export default class QuestList extends React.Component {
 
-    getInitialState: function () {
-        return {
+    constructor(params) {
+        super(params);
+        this.state = {
             quests: []
         };
-    },
+    }
     
-    componentDidMount: function () {
+    componentDidMount() {
          getAll(function (data) {
             this.setState({quests: data});
         }.bind(this));
-    },
+    }
 
-    render: function () {
+    render() {
 
-        var questNodes = this.state.quests.map(function (quest) {
-            return (
-                <QuestListItemComponent
-                    key={quest._id}
-                    id={quest._id}
-                    quest={quest}
-                    link={quest.photo[0].link}
-                />
-            );
-        }, this);
+        var questNodes = this.state.quests.map(
+            (quest) => <QuestListItemComponent key={quest._id}
+                                               id={quest._id}
+                                               quest={quest}
+                                               link={quest.photo[0].link} />
+        );
 
         return (
             <ul className='quest-list'>
@@ -59,7 +55,7 @@ var QuestList = React.createClass({
             </ul>
         );
     }
-});
+}
 
 ReactDOM.render(
     <QuestList />,
