@@ -1,2 +1,2 @@
 require('./main.styl');
-require('../../components/questList.jsx');
+require('../../components/questList/questList.jsx');
