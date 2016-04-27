@@ -43,7 +43,10 @@ module.exports = {
 
     plugins: [
         new ExtractTextPlugin('[name].bundle.css'),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.ProvidePlugin({
+            fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+        })
     ],
 
     postcss: [

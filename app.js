@@ -14,6 +14,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var authRoutes = require('./routes/auth');
 var commentRoutes = require('./routes/comments');
+var questList = require('./routes/questList');
 
 var secretKey = require('config').get('secretKey');
 
@@ -44,6 +45,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/', authRoutes);
 app.use('/', commentRoutes);
+app.use('/quests', questList);
 
 require('./controllers/auth/auth-config');
 // catch 404 and forward to error handler
