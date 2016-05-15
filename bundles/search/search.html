@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% if not isDev %}
+    <link rel="stylesheet" href="{{ bundleBase }}main.bundle.css">
+    {% endif %}
+    <script type="text/javascript" src="{{ bundleBase }}main.bundle.js"></script>
+    {% block head %}{% endblock %}
+
+    <script>
+        var resultHits = {{ searchHits|raw|json_encode }};
+    </script>
+</head>
+<body>
+<main class="main">
+    <header class="header">
+        {% include "../../blocks/header/header.html" %}
+        {% if user %}
+        <span class="logged-in">Вы вошли как {{ user }}</span>
+        {% else %}
+        <div class="sign-in">
+            <div class="sign-in__hide-button">Авторизация</div>
+            {% include "../../blocks/sign-in-form/sign-in-form.html" %}
+            {% include "../../blocks/sign-in/sign-in.html" %}
+            {% endif %}
+            {% include "../../blocks/search-form/search-form.html" %}
+        </div>
+    </header>
+
+    {% include "../../blocks/search-list/search-list.html" %}
+
+    {% include "../../blocks/footer/footer.html" %}
+</main>
+</body>
+</html>
+
