@@ -8,10 +8,6 @@
     {% endif %}
     <script type="text/javascript" src="{{ bundleBase }}main.bundle.js"></script>
     {% block head %}{% endblock %}
-
-    <script>
-        var resultHits = {{ searchHits|raw|json_encode }};
-    </script>
 </head>
 <body>
     <main class="main">
