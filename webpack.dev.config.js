@@ -9,7 +9,7 @@ module.exports = {
     entry: {
         main: './main/main.js',
         error: './error/error.js',
-        signup: './signup/sign-up.js',
+        signup: './sign-up/sign-up.js',
         new: './new-quest/new-quest.js'
     },
 
